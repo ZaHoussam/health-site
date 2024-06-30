@@ -1,0 +1,656 @@
+/* * Global Style Start */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+:root {
+  --txt-color: #1d2b4f;
+  --second-txt-color: #55ee5e;
+  --hover-color: #3d5a80;
+  --light-color: #fafafa;
+  --time: 0.4s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:is(nav, ul) {
+  list-style-type: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+.container {
+  width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ? Mobile Screen */
+@media screen and (max-width: 575px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* ? Smart Mobile Screen */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .container {
+    width: 540px;
+  }
+}
+
+/* ? Tablet Screen */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 720px;
+  }
+}
+
+/* ? Desktop Screen */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    width: 960px;
+  }
+}
+
+/* ? Labtop Screen */
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+  .container {
+    width: 1140px;
+  }
+}
+
+.padding-y {
+  padding: 100px 0;
+}
+
+/* ^ Title Header Start */
+.title-header {
+  text-align: center;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-header .title {
+  color: var(--txt-color);
+  font-size: 40px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.title-header .subtitle {
+  color: var(--hover-color);
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+  .title-header {
+    width: auto;
+  }
+  .title-header .title {
+    font-size: 35px;
+  }
+}
+/* ^ Title Header End */
+
+/* * Global Style End */
+/* * Header Start */
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--light-color);
+  z-index: 5;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  position: relative;
+}
+
+.header-content > .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.header-content .navbar-responsive {
+  display: none;
+}
+
+.header-content > .navbar li:not(:first-child) {
+  margin-left: 25px;
+}
+
+.header-content > .navbar a {
+  width: fit-content;
+  font-size: 1rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: var(--txt-color);
+  padding: 5px 10px;
+  text-align: center;
+  position: relative;
+  transition: var(--time);
+  z-index: 1;
+}
+
+.header-content > .navbar a:hover {
+  color: var(--light-color);
+}
+
+.header-content > .navbar a::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background-color: var(--hover-color);
+  left: 0;
+  top: 0;
+  transition: var(--time);
+  z-index: -1;
+}
+
+.header-content > .navbar a:hover:before {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .header-content > .navbar {
+    display: none;
+  }
+
+  .header-content .navbar-responsive {
+    display: flex;
+  }
+}
+
+/* ^ Header Content ====> NavBar Responsive */
+.header-content .navbar-responsive #menu {
+  display: none;
+}
+
+.header-content .navbar-responsive .menu {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--time);
+  transition-duration: var(--time);
+}
+
+.header-content .navbar-responsive #menu:checked + .menu {
+  transform: rotate(-90deg);
+}
+
+.header-content .navbar-responsive .bars {
+  width: 100%;
+  height: 4px;
+  background-color: var(--txt-color);
+  border-radius: 10px;
+  transition: var(--time);
+}
+
+.header-content .navbar-responsive #menu:checked + .menu .bar-1 {
+  transform: rotate(-58deg) translate(-15px, 0px);
+}
+
+.header-content .navbar-responsive #menu:checked + .menu .bar-2 {
+  transform: rotate(58deg) translate(4px, -6px);
+}
+
+.header-content .navbar-responsive .navbar {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  left: 0;
+  background-color: var(--light-color);
+  top: 73px;
+  overflow: hidden;
+  border: 0;
+  transition: var(--time);
+}
+
+.header-content .navbar-responsive #menu:checked ~ .navbar {
+  height: 317px;
+  border: 1px solid var(--hover-color);
+}
+
+.header-content .navbar-responsive .navbar a {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: var(--txt-color);
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  border-bottom: 1px solid var(--hover-color);
+  z-index: 1;
+  transition: var(--time);
+}
+
+.header-content .navbar-responsive .navbar li:last-child a {
+  border-bottom: 0;
+}
+
+.header-content .navbar-responsive .navbar a:hover {
+  color: var(--light-color);
+}
+
+.header-content .navbar-responsive .navbar a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  left: 0;
+  top: 0;
+  background-color: var(--hover-color);
+  height: 100%;
+  z-index: -1;
+  transition: var(--time);
+}
+
+.header-content .navbar-responsive .navbar a:hover:after {
+  width: 100%;
+}
+/* * Header End */
+/* * Hero Start */
+.hero {
+  height: 100vh;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: #ffe8e8;
+  border-radius: 50%;
+  left: -100px;
+  bottom: 0;
+  z-index: -1;
+}
+
+.hero :is(.container, .hero-content) {
+  height: 100%;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ^ Hero Content =====> Left */
+
+.hero-content .left {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.hero-content .left .title {
+  font-size: 4rem;
+  text-transform: capitalize;
+  color: var(--txt-color);
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content .left .title {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .hero-content .left .title {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hero-content .left .title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-content .left .paragraph {
+  color: var(--hover-color);
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.hero-content .left .btn {
+  width: 150px;
+  background-color: #2196f3;
+  text-align: center;
+  padding: 15px;
+  color: var(--light-color);
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  border-radius: 10px;
+  transition: var(--time);
+}
+
+.hero-content .left .btn:hover {
+  background-color: #03a9f4;
+}
+
+/* ^ Hero Content =====> Right */
+.hero-content .right {
+  flex: 1.8;
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-content .right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero-content .right {
+    flex: 1;
+  }
+}
+
+.hero-content .right img {
+  width: 65%;
+}
+
+@media screen and (max-width: 992px) {
+  .hero-content .right img {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hero-content .right img {
+    width: 80%;
+  }
+}
+/* * Hero End */
+/* * About & Choose Start */
+:is(.about-content, .choose-content, .our-doctors-content, .testi-content) {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px 50px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  :is(.choose-content, .our-doctors-content) {
+    justify-content: center;
+  }
+}
+
+:is(.about-content, .choose-content, .testi-content) .card {
+  flex: 1 25%;
+}
+
+:is(.about-content, .choose-content) .card img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+:is(.about-content, .choose-content, .testi-content) .card .title {
+  text-transform: capitalize;
+  font-size: 24px;
+  font-weight: 500;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  color: var(--txt-color);
+}
+
+:is(.about-content, .choose-content, .testi-content) .card .description {
+  padding-left: 10px;
+  line-height: 1.8;
+  color: var(--hover-color);
+}
+
+/* ^ Choose Section */
+:is(.choose-content, .our-doctors-content, .testi-content) .card {
+  background-color: var(--light-color);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 43px -3px #bdbdbd;
+  cursor: pointer;
+  transition: var(--time);
+}
+
+:is(.choose-content, .our-doctors-content, .testi-content) .card:hover {
+  background-color: var(--hover-color);
+}
+
+:is(.choose-content, .our-doctors-content, .testi-content)
+  .card:hover
+  :is(.title, .description) {
+  color: var(--light-color);
+}
+/* ^ Our Doctors Section */
+.our-doctors-content .title {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: var(--txt-color);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.our-doctors-content .description {
+  font-size: 18px;
+  color: var(--hover-color);
+  text-transform: capitalize;
+}
+/* * About & Choose End */
+/* * Testimonials Start */
+.testi-content .card {
+  position: relative;
+}
+
+.testi-content .card::before {
+  left: 0;
+  top: -15px;
+}
+
+.testi-content .card::after {
+  right: 0;
+  bottom: -15px;
+  transform: rotate(180deg);
+}
+
+.testi-content .card::before,
+.testi-content .card::after {
+  content: "";
+  position: absolute;
+  background-image: url(./images//quote.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+}
+
+.testi-content .card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.testi-content .card-header img {
+  width: 50px;
+  margin-bottom: 10px;
+}
+
+.testi-content .card-header .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.testi-content .card-header .description {
+  padding-left: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+/* * Testimonials End */
+/* * Footer Start */
+.footer {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-image: url(./images/Background-footer.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: -10%;
+  bottom: 0;
+  z-index: -1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 992px) {
+  .footer-content {
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+
+.footer-content :is(.form, .image) {
+  flex: 1;
+}
+
+/* ^ Footer-Content ====> Form */
+.footer-content .form {
+  background-color: var(--light-color);
+  box-shadow: 0px 10px 43px -3px #bdbdbd;
+  padding: 20px;
+}
+
+.footer-content .form .title {
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: var(--txt-color);
+  margin-bottom: 30px;
+}
+
+.footer-content .form :is(form, .input, input) {
+  width: 100%;
+}
+
+.footer-content .input {
+  height: 50px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.footer-content .input input {
+  height: 100%;
+  padding: 20px 15px;
+  color: var(--txt-color);
+  border: 1px solid #f2f2f2;
+  background-color: #f2f2f2;
+  transition: var(--time);
+  outline: none;
+}
+
+.footer-content .input:nth-last-child(2) input {
+  color: transparent;
+}
+
+.footer-content .input:nth-last-child(2) input:is(:focus, :valid) {
+  color: var(--txt-color);
+}
+
+.footer-content .input input:is(:focus, :valid) {
+  border-color: var(--hover-color);
+}
+
+.footer-content .input label {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  color: var(--hover-color);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  width: fit-content;
+  font-size: 0.8rem;
+  transition: var(--time);
+  background-color: transparent;
+  padding: 0;
+}
+
+.footer-content .input input:is(:focus, :valid) + label {
+  font-size: 0.7rem;
+  top: 0;
+  background-color: var(--light-color);
+  padding: 0 10px;
+}
+
+.footer-content .input .btn {
+  width: 100%;
+  height: 50px;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  background-color: #2196f3;
+  outline: none;
+  border: 0;
+  color: var(--light-color);
+  cursor: pointer;
+  transition: var(--time);
+}
+
+.footer-content .input .btn:hover {
+  background-color: #03a9f4;
+}
+
+/* ^ Footer-Content ====> Image */
+.footer-content .image {
+  text-align: right;
+}
+
+@media screen and (max-width: 992px) {
+  .footer-content .image {
+    flex: 1;
+    text-align: center;
+  }
+  .footer-content .image img {
+    width: 100%;
+  }
+}
+/* * Footer End */
